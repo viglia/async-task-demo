@@ -1,6 +1,6 @@
 FROM python:3.7
 
-WORKDIR /usr/local/bin
+WORKDIR /usr/src/app
 COPY job_consumer.py .
 COPY requirements.txt .
 
