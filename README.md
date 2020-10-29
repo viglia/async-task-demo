@@ -54,9 +54,12 @@ It's possible to take advantage of the browsable API
 
 ## Testing in Docker
 
-1. make sure to follow points `1` and `2` of the section *"How to run the system in docker"* 
-2. run the tests with
-
+1. make sure you have a rabbitmq broker running following point `1` of the section *"How to run the system in docker"* 
+2. start a `task_executor` (`job_consumer` image) with a timeout of 2 seconds
+```
+docker run --rm -it --network custom job_consumer job_queue -rhs rabbit -hs task-service -to 2
+```
+3. run the tests with
 ```
 docker run --rm -it --network custom --name task-service --entrypoint python -p 8000:8000  -e docker_rabbit_host='rabbit' django_service -m pytest --liveserver task-service:8000
 ```
