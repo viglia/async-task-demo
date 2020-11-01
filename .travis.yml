@@ -15,7 +15,10 @@ before_install:
 
 install:
   - cd task_management_project
+  - pip install --upgrade pip
   - pip install -r requirements.txt
+  - python manage.py makemigrations
+  - python manage.py migrate 
 
 script:
-  - python -m pytest --liveserver task-service:8000
+  - python -m pytest --liveserver 127.0.0.1:8000
