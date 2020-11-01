@@ -11,7 +11,7 @@ services:
 before_install:
   - docker run -p 5672:5672 --name rabbit rabbitmq:3-management
   - docker build -t job_consumer ./task_executor
-  - docker run --network host job_consumer job_queue
+  - docker run --network host job_consumer job_queue -to 2
 
 install:
   - cd task_management_project
